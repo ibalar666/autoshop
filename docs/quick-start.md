@@ -67,7 +67,7 @@ AUTOOPT_API_KEY=your_api_key_here
 AUTOOPT_API_URL=https://api.autoopt.ru/v2
 ```
 
-## Запуск
+## Запуск проекта
 
 ### Локальная разработка
 
@@ -91,16 +91,26 @@ php artisan queue:work
 * * * * * cd /path/to/autoshop && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-## Проверка установки
+## Полезные команды
+
+### Очистка кэша
+
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+```
+
+### Проверка установки
 
 Откройте в браузере:
 
 - `http://localhost:8000` — основное приложение
 - `http://localhost:8000/admin` — панель управления MoonShine
 
-## Устранение неполадок
+### Устранение неполадок
 
-### Ошибка подключения к Redis
+#### Ошибка подключения к Redis
 
 Проверьте, что Redis запущен:
 
@@ -110,17 +120,9 @@ redis-cli ping
 
 Должен вернуть `PONG`.
 
-### Ошибка прав доступа
+#### Ошибка прав доступа
 
 ```bash
 chmod -R 775 storage bootstrap/cache
 chown -R www-data:www-data storage bootstrap/cache
-```
-
-### Очистка кэша
-
-```bash
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
 ```
