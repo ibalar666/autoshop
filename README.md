@@ -1,74 +1,24 @@
 # Autoshop
 
-Проект интеграции с API поставщиков автозапчастей (Autoopt). Платформа для поиска, сравнения и заказа автозапчастей через единый интерфейс.
+Интернет-магазин автозапчастей на Laravel + MoonShine 4 + Autoopt API.
 
 ## Стек технологий
 
-- **PHP 8.3** — основной язык разработки
-- **Laravel 11** — PHP-фреймворк
-- **MoonShine 4** — административная панель
-- **MySQL 8.0** — основная база данных
-- **Redis** — кэширование и очереди
-- **Composer** — управление зависимостями
+- PHP 8.3
+- Laravel 11
+- MoonShine 4
+- MySQL 8.0
+- Redis
 
-## Архитектура проекта
+## Архитектура
 
-```
-User Request
-     ↓
-Controllers (HTTP Layer)
-     ↓
-Services (Business Logic)
-     ↓
-DTO (Data Transfer Objects)
-     ↓
-Suppliers API (External APIs)
-     ↓
-Cache / Database
-```
-
-### Слои архитектуры
-
-| Слой | Назначение | Примеры |
-|------|------------|---------|
-| **Controllers** | HTTP-обработка, валидация запросов | `ProductController`, `OrderController` |
-| **Services** | Бизнес-логика, координация | `ProductService`, `SearchService` |
-| **DTO** | Передача данных между слоями | `ProductDTO`, `SearchRequestDTO` |
-| **Suppliers API** | Интеграция с внешними API | `AutooptApiClient`, `SupplierClient` |
-
-## Структура проекта
-
-```
-autoshop/
-├── app/
-│   ├── Http/
-│   │   └── Controllers/      # Контроллеры
-│   ├── Services/             # Бизнес-логика
-│   ├── DTO/                  # Data Transfer Objects
-│   ├── Clients/              # HTTP-клиенты для API поставщиков
-│   └── Models/               # Eloquent модели
-├── config/                   # Конфигурации
-├── database/
-│   ├── migrations/           # Миграции БД
-│   └── seeders/              # Сидеры
-├── docs/                     # Документация
-│   ├── quick-start.md        # Быстрый старт
-│   └── architecture.md       # Архитектура проекта
-├── routes/                   # Маршруты
-├── resources/                # Views, assets
-├── storage/                  # Логи, кэш, файлы
-└── tests/                    # Тесты
-```
+Controllers → Services → DTO → Suppliers API → Cache/DB
 
 ## Документация
 
-- [Быстрый старт](docs/quick-start.md) — установка и запуск проекта
-- [Архитектура](docs/architecture.md) — описание архитектуры и принципов
+- [Быстрый старт](docs/quick-start.md)
+- [Архитектура](docs/architecture.md)
 
-## Спецификация API
+## API Поставщика
 
-- [Спецификация API Autoopt](https://api.autoopt.ru/v2/docs) — документация внешнего API поставщика
-
-## Лицензия
-
-MIT
+[Спецификация Autoopt API](https://beta.autoopt.ru/api.html#/paths/~1api~1v2~1parts~1search~1%7Barticle%7D/get)
